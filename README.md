@@ -4,7 +4,7 @@
 ## 通用物块操作函数  
 
 * `IMyTerminalBlock GetBlock(string name)` 传递物块名，返回物块对象  
-* `T GetBlock<T>(string name)` 功能同上，泛型版  
+* `T GetBlock<T>(string name)` ~~功能同上，泛型版~~现阶段存在问题  
 * `void RunAction(string blockName, string actionName)` 传递物块名，执行 Action  
 * `void RunAction(IMyTerminalBlock block, string actionName)` 传递物块对象，执行 Action  
 * `void BatchRunAction(IList<string> blockNames, string actionName)` 通过物块名列表（如数组），指定多个物块执行 Action  
