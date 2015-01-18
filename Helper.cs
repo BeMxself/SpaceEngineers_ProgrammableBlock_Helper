@@ -1,7 +1,7 @@
 IMyTerminalBlock GetBlock(string name){    
     IMyTerminalBlock block = GridTerminalSystem.GetBlockWithName(name); 
     if (block==null) 
-        throw new Exception(String.Format("\"{0}\" Not Found")); 
+        throw new Exception(String.Format("\"{0}\" Not Found", name)); 
     return block; 
 }    
 T GetBlock<T>(string name){
