@@ -26,7 +26,7 @@ Var(IMyGridTerminalSystem gts, string prefix)
 Var(IMyGridTerminalSystem gts, string prefix, string separator)  
 ```
   
-*参数说明*
+**参数说明**
   
  **gts** 传递GridTerminalSystem  
  **prefix** 用来存变量的物块名称前缀，不指定默认是 “$var”  
@@ -37,5 +37,7 @@ Var(IMyGridTerminalSystem gts, string prefix, string separator)
 ### 方法
 * `T GetVar<T>()` 返回指定类型的值  
 * `T GetVar<T>(uint index)` 同上，不过可以指定索引位置（从0开始），也就是说一个Var对象可以存储多个值  
+* `T GetVarWithDefault<T>(object default)` 返回指定类型的值，如果获取失败则返回指定的默认值
+* `T GetVarWithDefault<T>(uint index, object default)` 同上，不过可以指定索引位置（从0开始）
 * `void SetVar(object value)` 设置值  
 * `void SetVar(uint index, object value)` 同上，可以指定索引位置，同样也是0开始  
