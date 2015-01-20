@@ -1,6 +1,7 @@
 # SpaceEngineers Programmable Block Helper
   
-  
+# 以下内容全部过期，待更新  
+
 ## 通用物块操作函数  
 
 * `IMyTerminalBlock GetBlock(string name)` 传递物块名，返回物块对象  
