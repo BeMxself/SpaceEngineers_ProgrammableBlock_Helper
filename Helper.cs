@@ -126,7 +126,6 @@
             SetString(index, Convert.ToString(value)); 
         } 
     }  
-  
     class ExNamedMem {    
         private string itemSep = "|";   
         private string nameSep = ":";  
@@ -208,5 +207,3 @@
             SetString(name,  Convert.ToString(value)); 
         } 
     }  
- 
-
