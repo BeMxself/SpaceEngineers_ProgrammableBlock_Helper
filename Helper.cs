@@ -206,4 +206,78 @@
         public void SetFloat(string name, float value){ 
             SetString(name,  Convert.ToString(value)); 
         } 
+    }
+    void InitMem(){ 
+        if (Storage == null) 
+            Storage = ""; 
+        Mem.Init(Storage);
     }  
+    void WriteMem(){ 
+        Mem.WriteToStr(ref Storage); 
+    } 
+    void SaveMem(){ 
+        WriteMem(); 
+    } 
+    class Mem{  
+        static private string itemSep = "|";  
+        static private string nameSep = ":"; 
+        static private string arraySep = ","; 
+        static private string memStr; 
+        static private Dictionary<string, string> memDic; 
+        static public void Init(string str){ 
+            Set(str); 
+        } 
+        static public void WriteToStr(ref string str){ 
+            str = Get(); 
+        } 
+        static public void Set(string value){  
+            memStr = value;  
+            memDic = new Dictionary<string, string>(); 
+            string[] arr = memStr.Split(new string[]{itemSep}, StringSplitOptions.None);   
+            for (int i = 0; i < arr.Length; ++i) {  
+                if (arr[i] == "")  
+                    continue;  
+                string[] nvArr = arr[i].Split(new string[]{nameSep}, StringSplitOptions.None);  
+                memDic[nvArr[0]] = nvArr.Length == 1 ? "" : nvArr[1];  
+            } 
+        } 
+        static public string Get(){ 
+            StringBuilder sb = new StringBuilder(); 
+            string[] keys = new string[memDic.Count]; 
+            memDic.Keys.CopyTo(keys,0); 
+            for (int i = 0; i <  keys.Length; ++i) { 
+                sb.Append(keys[i]); 
+                sb.Append(nameSep); 
+                sb.Append(memDic[keys[i]]); 
+                sb.Append(itemSep); 
+            } 
+            return sb.ToString(); 
+        } 
+        static public string GetString(string name){ 
+            if (!memDic.ContainsKey(name)) 
+                memDic[name]=""; 
+            return memDic[name]; 
+        }  
+        static public int GetInt(string name){   
+            int value = 0;  
+            int.TryParse(GetString(name), out value);  
+            return value;  
+        } 
+        static public float GetFloat(string name){  
+            float value = 0;  
+            float.TryParse(GetString(name), out value); 
+            return value; 
+        } 
+        static public void SetString(string name, string value){ 
+            memDic[name] = value; 
+        }    
+        static public void SetVar(string name, object value){   
+            SetString(name,  Convert.ToString(value)); 
+        } 
+        static public void SetInt(string name, int value){  
+            SetString(name,  Convert.ToString(value)); 
+        }  
+        static public void SetFloat(string name, float value){  
+            SetString(name,  Convert.ToString(value)); 
+        }  
+    } 
